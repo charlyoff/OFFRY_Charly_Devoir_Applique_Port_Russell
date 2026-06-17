@@ -100,6 +100,7 @@ GET    /reservations
 GET    /catways/:id/reservations
 GET    /catways/:id/reservations/:reservationId
 POST   /catways/:id/reservations
+PUT    /catways/:id/reservations
 PUT    /catways/:id/reservations/:reservationId
 DELETE /catways/:id/reservations/:reservationId
 ```
@@ -110,6 +111,10 @@ Les alias suivants sont aussi disponibles pour respecter le brief :
 GET    /catway/:id/reservations/:reservationId
 DELETE /catway/:id/reservations/:reservationId
 ```
+
+La route `PUT /catways/:id/reservations` est conservee pour respecter la route
+du brief. Elle attend l'identifiant de reservation dans le champ
+`reservationId` du formulaire ou du corps de requete.
 
 ### Utilisateurs
 
@@ -142,4 +147,3 @@ SEED_ADMIN_USERNAME
 SEED_ADMIN_EMAIL
 SEED_ADMIN_PASSWORD
 ```
-

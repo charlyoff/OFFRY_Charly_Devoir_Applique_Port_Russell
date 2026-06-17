@@ -88,6 +88,7 @@ GET    /reservations
 GET    /catways/:id/reservations
 GET    /catways/:id/reservations/:reservationId
 POST   /catways/:id/reservations
+PUT    /catways/:id/reservations
 PUT    /catways/:id/reservations/:reservationId
 DELETE /catways/:id/reservations/:reservationId
 ```
@@ -95,6 +96,10 @@ DELETE /catways/:id/reservations/:reservationId
 Le projet vérifie que la date de fin est après la date de début. Il vérifie
 aussi qu'une réservation ne chevauche pas une autre réservation sur le même
 catway.
+
+La route `PUT /catways/:id/reservations` correspond à la route indiquée dans le
+brief. Dans ce cas, l'identifiant de la réservation est transmis dans le corps
+de la requête avec le champ `reservationId`.
 
 ## Gestion des utilisateurs
 
@@ -204,4 +209,3 @@ dans le fichier `.env`.
 Enfin, j'ai ajouté une documentation API accessible depuis l'application et un
 script `npm run seed` pour importer les fichiers JSON fournis dans la base
 MongoDB.
-
