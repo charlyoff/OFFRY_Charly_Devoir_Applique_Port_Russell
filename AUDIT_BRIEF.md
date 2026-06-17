@@ -18,7 +18,7 @@ couverte dans le projet.
 | Tableau de bord utilisateur connecte | OK | `GET /dashboard`, `src/views/dashboard.ejs` |
 | Depot GitHub | OK | `https://github.com/charlyoff/OFFRY_Charly_Devoir_Applique_Port_Russell` |
 | Documentation API | OK | `GET /documentation`, `src/views/api-docs.ejs` |
-| Deploiement | A finaliser | Projet pret pour Render, voir `DEPLOIEMENT.md` |
+| Deploiement | OK | Application Render : `https://port-russell-charly-api.onrender.com` |
 
 ## Donnees
 
@@ -103,10 +103,9 @@ Express accepte `/users` et `/users/` avec la configuration par defaut.
 | Code commente avec JSDOC | OK | Controleurs, modeles, middleware, seed, serveur |
 | Documentation API manuelle ou Swagger | OK | Documentation manuelle `/documentation` |
 | Lien GitHub | OK | `LIVRABLE.md` |
-| Lien application hebergee + identifiants | A finaliser | Le lien heberge reste a remplir apres Render |
+| Lien application hebergee + identifiants | OK | `LIVRABLE.md` |
 
 ## Conclusion
 
-Le brief est couvert. Le seul element qui reste externe au code est le lien de
-l'application hebergee, car il depend de la connexion au compte Render ou
-Netlify.
+Le brief est couvert. Le depot GitHub, le lien Render et les identifiants de
+demonstration sont disponibles dans `LIVRABLE.md`.

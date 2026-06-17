@@ -13,7 +13,7 @@ https://github.com/charlyoff/OFFRY_Charly_Devoir_Applique_Port_Russell
 Lien a fournir :
 
 ```txt
-https://...
+https://port-russell-charly-api.onrender.com
 ```
 
 ## Identifiants de demonstration
@@ -42,4 +42,15 @@ Mot de passe : Password123!
 - Documentation API manuelle.
 - Code commente avec JSDOC.
 - Projet pret a versionner sur GitHub.
-- Projet pret a deployer sur un hebergeur Node.js.
+- Projet deploye sur Render.
+
+## Liens utiles
+
+```txt
+Accueil : https://port-russell-charly-api.onrender.com
+Documentation API : https://port-russell-charly-api.onrender.com/documentation
+Tableau de bord : https://port-russell-charly-api.onrender.com/dashboard
+```
+
+Si Render affiche temporairement `Not Found` juste apres une creation ou un
+redeploiement, attendre 1 a 2 minutes puis faire Ctrl + F5.

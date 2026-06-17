@@ -1,6 +1,10 @@
 # Deploiement Render
 
-Le projet est pret pour Render avec le fichier `render.yaml`.
+Le projet est deploye sur Render.
+
+```txt
+https://port-russell-charly-api.onrender.com
+```
 
 ## Etapes
 
@@ -31,13 +35,31 @@ SEED_ADMIN_PASSWORD=Password123!
 npm run seed
 ```
 
-## Valeurs a remettre dans le livrable
+## Valeurs du livrable
 
-Une fois Render deploye, completer `LIVRABLE.md` avec :
+Les valeurs a rendre sont :
 
 ```txt
-Lien application : https://...
+Lien application : https://port-russell-charly-api.onrender.com
 Email : admin@portrussell.local
 Mot de passe : Password123!
 ```
 
+## Depannage Render gratuit
+
+Si le lien `Consulter la documentation API` affiche temporairement `Not Found`,
+essayer directement :
+
+```txt
+https://port-russell-charly-api.onrender.com/documentation
+```
+
+Si la connexion redirige vers une page `Not Found`, essayer directement :
+
+```txt
+https://port-russell-charly-api.onrender.com/dashboard
+```
+
+Render gratuit peut mettre quelques minutes a stabiliser une application juste
+apres sa creation. Attendre 1 a 2 minutes, faire Ctrl + F5, puis au besoin
+lancer `Manual Deploy -> Deploy latest commit` dans Render.
