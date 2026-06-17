@@ -6,6 +6,9 @@
 https://port-russell-charly-api.onrender.com
 ```
 
+La route racine `/` existe. Si Render affiche temporairement `Not Found` sur la
+racine, essayer directement `/documentation` ou `/dashboard`.
+
 ## Identifiants
 
 ```txt

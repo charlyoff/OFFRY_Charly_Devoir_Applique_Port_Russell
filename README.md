@@ -77,6 +77,9 @@ Ces valeurs peuvent etre changees dans `.env` avant l'import.
 
 ```txt
 GET  /
+GET  /login
+GET  /home
+GET  /accueil
 POST /login
 GET  /logout
 GET  /dashboard

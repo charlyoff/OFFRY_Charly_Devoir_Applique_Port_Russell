@@ -84,6 +84,7 @@ Express accepte `/users` et `/users/` avec la configuration par defaut.
 | Page demandee | Statut | Route du projet |
 | --- | --- | --- |
 | Page d'accueil `/` | OK | Presentation, formulaire de connexion, lien documentation |
+| Alias page d'accueil | OK | `/login`, `/home`, `/accueil` affichent la meme page |
 | Page CRUD catways | OK | `/catways` + `/catways/:id` |
 | Page CRUD reservations | OK | `/reservations` + details par catway |
 | Page CRUD utilisateurs | OK | `/users` + `/users/:email` |

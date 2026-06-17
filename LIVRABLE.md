@@ -52,5 +52,6 @@ Documentation API : https://port-russell-charly-api.onrender.com/documentation
 Tableau de bord : https://port-russell-charly-api.onrender.com/dashboard
 ```
 
-Si Render affiche temporairement `Not Found` juste apres une creation ou un
-redeploiement, attendre 1 a 2 minutes puis faire Ctrl + F5.
+Si Render affiche temporairement `Not Found` sur `/`, essayer directement
+`/documentation` ou `/dashboard`, attendre 1 a 2 minutes puis faire Ctrl + F5.
+Ce comportement peut arriver sur Render gratuit juste apres un redeploiement.
