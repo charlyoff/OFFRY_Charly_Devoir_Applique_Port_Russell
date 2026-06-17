@@ -1,0 +1,76 @@
+<%- include("../partials/head") %>
+
+<div class="app-shell">
+  <%- include("../partials/nav") %>
+
+  <main class="content">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">Infrastructure</p>
+        <h1>Gestion des catways</h1>
+      </div>
+      <a class="button button-secondary" href="/documentation">Routes API</a>
+    </header>
+
+    <%- include("../partials/messages") %>
+
+    <section class="grid-two">
+      <form class="panel form-panel" action="/catways" method="post">
+        <h2>Creer un catway</h2>
+        <label>
+          Numero
+          <input type="number" name="catwayNumber" min="1" required>
+        </label>
+        <label>
+          Type
+          <select name="catwayType" required>
+            <option value="short">short</option>
+            <option value="long">long</option>
+          </select>
+        </label>
+        <label>
+          Etat
+          <textarea name="catwayState" rows="4" minlength="3" required></textarea>
+        </label>
+        <button class="button full" type="submit">Creer</button>
+      </form>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Liste</h2>
+          <span class="count"><%= catways.length %> catways</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Numero</th>
+                <th>Type</th>
+                <th>Etat</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% catways.forEach(function (catway) { %>
+                <tr>
+                  <td><strong>#<%= catway.catwayNumber %></strong></td>
+                  <td><span class="tag"><%= catway.catwayType %></span></td>
+                  <td><%= catway.catwayState %></td>
+                  <td class="actions">
+                    <a class="button button-small" href="/catways/<%= catway.catwayNumber %>">Voir</a>
+                    <form action="/catways/<%= catway.catwayNumber %>?_method=DELETE" method="post">
+                      <button class="button button-danger button-small" type="submit">Supprimer</button>
+                    </form>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+</div>
+
+<%- include("../partials/footer") %>
+

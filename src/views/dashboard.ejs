@@ -1,0 +1,75 @@
+<%- include("partials/head") %>
+
+<div class="app-shell">
+  <%- include("partials/nav") %>
+
+  <main class="content">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow"><%= formatDate(today) %></p>
+        <h1>Tableau de bord</h1>
+      </div>
+      <div class="header-actions">
+        <a class="button button-secondary" href="/catways">Catways</a>
+        <a class="button" href="/reservations">Reservations</a>
+      </div>
+    </header>
+
+    <%- include("partials/messages") %>
+
+    <section class="stats-grid" aria-label="Indicateurs">
+      <article class="stat">
+        <span>Catways</span>
+        <strong><%= counts.catways %></strong>
+      </article>
+      <article class="stat">
+        <span>Reservations</span>
+        <strong><%= counts.reservations %></strong>
+      </article>
+      <article class="stat">
+        <span>Utilisateurs</span>
+        <strong><%= counts.users %></strong>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Reservations en cours</h2>
+        <a href="/reservations">Tout afficher</a>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Catway</th>
+              <th>Client</th>
+              <th>Bateau</th>
+              <th>Debut</th>
+              <th>Fin</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (currentReservations.length === 0) { %>
+              <tr>
+                <td colspan="5" class="empty">Aucune reservation en cours.</td>
+              </tr>
+            <% } %>
+            <% currentReservations.forEach(function (reservation) { %>
+              <tr>
+                <td><a href="/catways/<%= reservation.catwayNumber %>">#<%= reservation.catwayNumber %></a></td>
+                <td><%= reservation.clientName %></td>
+                <td><%= reservation.boatName %></td>
+                <td><%= formatDate(reservation.startDate) %></td>
+                <td><%= formatDate(reservation.endDate) %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<%- include("partials/footer") %>
+

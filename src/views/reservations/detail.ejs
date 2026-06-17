@@ -1,0 +1,76 @@
+<%- include("../partials/head") %>
+
+<div class="app-shell">
+  <%- include("../partials/nav") %>
+
+  <main class="content">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">Catway #<%= reservation.catwayNumber %></p>
+        <h1>Detail reservation</h1>
+      </div>
+      <a class="button button-secondary" href="/reservations">Retour</a>
+    </header>
+
+    <%- include("../partials/messages") %>
+
+    <section class="grid-two">
+      <article class="panel">
+        <h2>Informations</h2>
+        <dl class="details">
+          <div>
+            <dt>Client</dt>
+            <dd><%= reservation.clientName %></dd>
+          </div>
+          <div>
+            <dt>Bateau</dt>
+            <dd><%= reservation.boatName %></dd>
+          </div>
+          <div>
+            <dt>Debut</dt>
+            <dd><%= formatDate(reservation.startDate) %></dd>
+          </div>
+          <div>
+            <dt>Fin</dt>
+            <dd><%= formatDate(reservation.endDate) %></dd>
+          </div>
+        </dl>
+      </article>
+
+      <form class="panel form-panel" action="/catways/<%= reservation.catwayNumber %>/reservations/<%= reservation._id %>?_method=PUT" method="post">
+        <h2>Modifier</h2>
+        <input type="hidden" name="reservationId" value="<%= reservation._id %>">
+        <label>
+          Catway
+          <select name="catwayNumberProxy" onchange="this.form.action='/catways/' + this.value + '/reservations/<%= reservation._id %>?_method=PUT'" required>
+            <% catways.forEach(function (catway) { %>
+              <option value="<%= catway.catwayNumber %>" <%= reservation.catwayNumber === catway.catwayNumber ? 'selected' : '' %>>
+                #<%= catway.catwayNumber %> - <%= catway.catwayType %>
+              </option>
+            <% }) %>
+          </select>
+        </label>
+        <label>
+          Client
+          <input type="text" name="clientName" value="<%= reservation.clientName %>" minlength="2" required>
+        </label>
+        <label>
+          Bateau
+          <input type="text" name="boatName" value="<%= reservation.boatName %>" minlength="2" required>
+        </label>
+        <label>
+          Date de debut
+          <input type="datetime-local" name="startDate" value="<%= formatDateTimeInput(reservation.startDate) %>" required>
+        </label>
+        <label>
+          Date de fin
+          <input type="datetime-local" name="endDate" value="<%= formatDateTimeInput(reservation.endDate) %>" required>
+        </label>
+        <button class="button full" type="submit">Enregistrer</button>
+      </form>
+    </section>
+  </main>
+</div>
+
+<%- include("../partials/footer") %>
+

@@ -1,0 +1,27 @@
+<aside class="sidebar">
+  <a class="brand" href="/dashboard" aria-label="Port Russell">
+    <span class="brand-mark">PR</span>
+    <span>
+      <strong>Port Russell</strong>
+      <small>Capitainerie</small>
+    </span>
+  </a>
+
+  <nav class="main-nav" aria-label="Navigation principale">
+    <a class="<%= currentPath === '/dashboard' ? 'active' : '' %>" href="/dashboard">Tableau de bord</a>
+    <a class="<%= currentPath.startsWith('/catways') ? 'active' : '' %>" href="/catways">Catways</a>
+    <a class="<%= currentPath.startsWith('/reservations') ? 'active' : '' %>" href="/reservations">Reservations</a>
+    <a class="<%= currentPath.startsWith('/users') ? 'active' : '' %>" href="/users">Utilisateurs</a>
+    <a class="<%= currentPath === '/documentation' ? 'active' : '' %>" href="/documentation">Documentation API</a>
+  </nav>
+
+  <% if (currentUser) { %>
+    <div class="session-card">
+      <span>Connecte</span>
+      <strong><%= currentUser.username %></strong>
+      <small><%= currentUser.email %></small>
+      <a class="button button-secondary full" href="/logout">Deconnexion</a>
+    </div>
+  <% } %>
+</aside>
+

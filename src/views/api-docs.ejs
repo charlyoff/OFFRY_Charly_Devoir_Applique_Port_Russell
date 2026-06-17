@@ -1,0 +1,64 @@
+<%- include("partials/head") %>
+
+<div class="app-shell">
+  <% if (currentUser) { %>
+    <%- include("partials/nav") %>
+  <% } %>
+
+  <main class="content <%= currentUser ? '' : 'content-public' %>">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">API privee</p>
+        <h1>Documentation API</h1>
+      </div>
+      <% if (!currentUser) { %>
+        <a class="button button-secondary" href="/">Retour a l'accueil</a>
+      <% } %>
+    </header>
+
+    <section class="panel">
+      <h2>Authentification</h2>
+      <div class="doc-table">
+        <p><code>POST /login</code> connexion avec <code>email</code> et <code>password</code>.</p>
+        <p><code>GET /logout</code> deconnexion et retour a l'accueil.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Catways</h2>
+      <div class="route-list">
+        <code>GET /catways</code>
+        <code>GET /catways/:id</code>
+        <code>POST /catways</code>
+        <code>PUT /catways/:id</code>
+        <code>DELETE /catways/:id</code>
+      </div>
+      <p class="muted">Le parametre <code>:id</code> represente le numero du catway.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Reservations</h2>
+      <div class="route-list">
+        <code>GET /catways/:id/reservations</code>
+        <code>GET /catways/:id/reservations/:reservationId</code>
+        <code>POST /catways/:id/reservations</code>
+        <code>PUT /catways/:id/reservations/:reservationId</code>
+        <code>DELETE /catways/:id/reservations/:reservationId</code>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Utilisateurs</h2>
+      <div class="route-list">
+        <code>GET /users</code>
+        <code>GET /users/:email</code>
+        <code>POST /users</code>
+        <code>PUT /users/:email</code>
+        <code>DELETE /users/:email</code>
+      </div>
+    </section>
+  </main>
+</div>
+
+<%- include("partials/footer") %>
+

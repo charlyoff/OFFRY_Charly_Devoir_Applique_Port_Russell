@@ -1,0 +1,94 @@
+<%- include("../partials/head") %>
+
+<div class="app-shell">
+  <%- include("../partials/nav") %>
+
+  <main class="content">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow"><%= selectedCatway ? 'Catway #' + selectedCatway.catwayNumber : 'Planning' %></p>
+        <h1>Gestion des reservations</h1>
+      </div>
+      <a class="button button-secondary" href="/catways">Catways</a>
+    </header>
+
+    <%- include("../partials/messages") %>
+
+    <section class="grid-two">
+      <form class="panel form-panel" action="/catways/<%= selectedCatway ? selectedCatway.catwayNumber : (catways[0] ? catways[0].catwayNumber : '') %>/reservations" method="post">
+        <h2>Creer une reservation</h2>
+        <label>
+          Catway
+          <select name="catwayNumberProxy" onchange="this.form.action='/catways/' + this.value + '/reservations'" required>
+            <% catways.forEach(function (catway) { %>
+              <option value="<%= catway.catwayNumber %>" <%= selectedCatway && selectedCatway.catwayNumber === catway.catwayNumber ? 'selected' : '' %>>
+                #<%= catway.catwayNumber %> - <%= catway.catwayType %>
+              </option>
+            <% }) %>
+          </select>
+        </label>
+        <label>
+          Client
+          <input type="text" name="clientName" minlength="2" required>
+        </label>
+        <label>
+          Bateau
+          <input type="text" name="boatName" minlength="2" required>
+        </label>
+        <label>
+          Date de debut
+          <input type="datetime-local" name="startDate" required>
+        </label>
+        <label>
+          Date de fin
+          <input type="datetime-local" name="endDate" required>
+        </label>
+        <button class="button full" type="submit">Creer</button>
+      </form>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Reservations</h2>
+          <span class="count"><%= reservations.length %> lignes</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Catway</th>
+                <th>Client</th>
+                <th>Bateau</th>
+                <th>Debut</th>
+                <th>Fin</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (reservations.length === 0) { %>
+                <tr><td colspan="6" class="empty">Aucune reservation.</td></tr>
+              <% } %>
+              <% reservations.forEach(function (reservation) { %>
+                <tr>
+                  <td><a href="/catways/<%= reservation.catwayNumber %>">#<%= reservation.catwayNumber %></a></td>
+                  <td><%= reservation.clientName %></td>
+                  <td><%= reservation.boatName %></td>
+                  <td><%= formatDate(reservation.startDate) %></td>
+                  <td><%= formatDate(reservation.endDate) %></td>
+                  <td class="actions">
+                    <a class="button button-small" href="/catways/<%= reservation.catwayNumber %>/reservations/<%= reservation._id %>">Voir</a>
+                    <form action="/catways/<%= reservation.catwayNumber %>/reservations/<%= reservation._id %>?_method=DELETE" method="post">
+                      <button class="button button-danger button-small" type="submit">Supprimer</button>
+                    </form>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+</div>
+
+<%- include("../partials/footer") %>
+

@@ -1,0 +1,57 @@
+<%- include("../partials/head") %>
+
+<div class="app-shell">
+  <%- include("../partials/nav") %>
+
+  <main class="content">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow"><%= user.email %></p>
+        <h1><%= user.username %></h1>
+      </div>
+      <a class="button button-secondary" href="/users">Retour</a>
+    </header>
+
+    <%- include("../partials/messages") %>
+
+    <section class="grid-two">
+      <article class="panel">
+        <h2>Compte</h2>
+        <dl class="details">
+          <div>
+            <dt>Nom</dt>
+            <dd><%= user.username %></dd>
+          </div>
+          <div>
+            <dt>Email</dt>
+            <dd><%= user.email %></dd>
+          </div>
+          <div>
+            <dt>Cree le</dt>
+            <dd><%= formatDate(user.createdAt) %></dd>
+          </div>
+        </dl>
+      </article>
+
+      <form class="panel form-panel" action="/users/<%= encodeURIComponent(user.email) %>?_method=PUT" method="post">
+        <h2>Modifier</h2>
+        <label>
+          Nom d'utilisateur
+          <input type="text" name="username" value="<%= user.username %>" minlength="2" required>
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" value="<%= user.email %>" required>
+        </label>
+        <label>
+          Nouveau mot de passe
+          <input type="password" name="password" minlength="8" placeholder="Laisser vide pour conserver">
+        </label>
+        <button class="button full" type="submit">Enregistrer</button>
+      </form>
+    </section>
+  </main>
+</div>
+
+<%- include("../partials/footer") %>
+

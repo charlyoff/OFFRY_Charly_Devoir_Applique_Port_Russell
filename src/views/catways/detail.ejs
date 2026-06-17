@@ -1,0 +1,85 @@
+<%- include("../partials/head") %>
+
+<div class="app-shell">
+  <%- include("../partials/nav") %>
+
+  <main class="content">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">Catway #<%= catway.catwayNumber %></p>
+        <h1>Detail du catway</h1>
+      </div>
+      <div class="header-actions">
+        <a class="button button-secondary" href="/catways">Retour</a>
+        <a class="button" href="/catways/<%= catway.catwayNumber %>/reservations">Reservations</a>
+      </div>
+    </header>
+
+    <%- include("../partials/messages") %>
+
+    <section class="grid-two">
+      <article class="panel">
+        <h2>Informations</h2>
+        <dl class="details">
+          <div>
+            <dt>Numero</dt>
+            <dd>#<%= catway.catwayNumber %></dd>
+          </div>
+          <div>
+            <dt>Type</dt>
+            <dd><span class="tag"><%= catway.catwayType %></span></dd>
+          </div>
+          <div>
+            <dt>Etat</dt>
+            <dd><%= catway.catwayState %></dd>
+          </div>
+        </dl>
+      </article>
+
+      <form class="panel form-panel" action="/catways/<%= catway.catwayNumber %>?_method=PUT" method="post">
+        <h2>Modifier l'etat</h2>
+        <p class="muted">Le numero et le type ne sont pas modifiables.</p>
+        <label>
+          Etat du catway
+          <textarea name="catwayState" rows="6" minlength="3" required><%= catway.catwayState %></textarea>
+        </label>
+        <button class="button full" type="submit">Enregistrer</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Reservations rattachees</h2>
+        <a href="/catways/<%= catway.catwayNumber %>/reservations">Gerer</a>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Client</th>
+              <th>Bateau</th>
+              <th>Debut</th>
+              <th>Fin</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (reservations.length === 0) { %>
+              <tr><td colspan="4" class="empty">Aucune reservation.</td></tr>
+            <% } %>
+            <% reservations.forEach(function (reservation) { %>
+              <tr>
+                <td><%= reservation.clientName %></td>
+                <td><%= reservation.boatName %></td>
+                <td><%= formatDate(reservation.startDate) %></td>
+                <td><%= formatDate(reservation.endDate) %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<%- include("../partials/footer") %>
+

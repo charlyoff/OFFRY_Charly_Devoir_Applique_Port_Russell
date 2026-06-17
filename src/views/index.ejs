@@ -1,0 +1,32 @@
+<%- include("partials/head") %>
+
+<main class="public-shell">
+  <section class="login-panel">
+    <div>
+      <span class="brand-mark large">PR</span>
+      <h1>Port de Plaisance Russell</h1>
+      <p>
+        Application privee de gestion des catways, reservations et utilisateurs
+        de la capitainerie.
+      </p>
+      <a class="doc-link" href="/documentation">Consulter la documentation API</a>
+    </div>
+
+    <form class="card login-card" action="/login" method="post">
+      <h2>Connexion</h2>
+      <%- include("partials/messages") %>
+      <label>
+        Email
+        <input type="email" name="email" autocomplete="email" required>
+      </label>
+      <label>
+        Mot de passe
+        <input type="password" name="password" autocomplete="current-password" required>
+      </label>
+      <button class="button full" type="submit">Acceder au tableau de bord</button>
+    </form>
+  </section>
+</main>
+
+<%- include("partials/footer") %>
+

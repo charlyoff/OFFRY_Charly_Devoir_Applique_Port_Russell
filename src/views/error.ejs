@@ -1,0 +1,18 @@
+<%- include("partials/head") %>
+
+<div class="app-shell">
+  <% if (currentUser) { %>
+    <%- include("partials/nav") %>
+  <% } %>
+
+  <main class="content <%= currentUser ? '' : 'content-public' %>">
+    <section class="panel error-panel">
+      <h1><%= title %></h1>
+      <p><%= message %></p>
+      <a class="button" href="<%= currentUser ? '/dashboard' : '/' %>">Retour</a>
+    </section>
+  </main>
+</div>
+
+<%- include("partials/footer") %>
+

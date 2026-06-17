@@ -1,0 +1,73 @@
+<%- include("../partials/head") %>
+
+<div class="app-shell">
+  <%- include("../partials/nav") %>
+
+  <main class="content">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">Comptes</p>
+        <h1>Gestion des utilisateurs</h1>
+      </div>
+      <a class="button button-secondary" href="/documentation">Routes API</a>
+    </header>
+
+    <%- include("../partials/messages") %>
+
+    <section class="grid-two">
+      <form class="panel form-panel" action="/users" method="post">
+        <h2>Creer un utilisateur</h2>
+        <label>
+          Nom d'utilisateur
+          <input type="text" name="username" minlength="2" required>
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" required>
+        </label>
+        <label>
+          Mot de passe
+          <input type="password" name="password" minlength="8" required>
+        </label>
+        <button class="button full" type="submit">Creer</button>
+      </form>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Utilisateurs</h2>
+          <span class="count"><%= users.length %> comptes</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% users.forEach(function (user) { %>
+                <tr>
+                  <td><%= user.username %></td>
+                  <td><%= user.email %></td>
+                  <td class="actions">
+                    <a class="button button-small" href="/users/<%= encodeURIComponent(user.email) %>">Voir</a>
+                    <% if (!currentUser || currentUser.email !== user.email) { %>
+                      <form action="/users/<%= encodeURIComponent(user.email) %>?_method=DELETE" method="post">
+                        <button class="button button-danger button-small" type="submit">Supprimer</button>
+                      </form>
+                    <% } %>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+</div>
+
+<%- include("../partials/footer") %>
+
